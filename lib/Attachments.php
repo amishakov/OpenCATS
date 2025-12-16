@@ -967,7 +967,7 @@ class AttachmentCreator
             'xlsx', 'xps'
         );
 
-        $extension = strtolower(pathinfo($originalFilename, PATHINFO_EXTENSION));
+        $extension = FileUtility::getFileExtension($originalFilename);
 
         if (!in_array($extension, $allowedExtensions, true))
         {
