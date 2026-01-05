@@ -237,8 +237,8 @@ use OpenCATS\UI\CandidateDuplicateQuickActionMenu;
                                     </tr>
                                     <tr>
                                         <td class="data">
-                                            <a href="attachments/<?php $this->_($attachmentsData['directoryName']) ?>/<?php $this->_($attachmentsData['storedFilename']) ?>">
-                                                <img src="attachments/<?php $this->_($attachmentsData['directoryName']) ?>/<?php $this->_($attachmentsData['storedFilename']) ?>" border="0" alt="" width="125" />
+                                            <a href="<?php echo $attachmentsData['retrievalURL']; ?>">
+                                                <img src="<?php echo $attachmentsData['retrievalURL']; ?>" border="0" alt="" width="125" />
                                             </a>
                                         </td>
                                     </tr>

@@ -46,7 +46,7 @@
                                     </td>
                                     <td>
                                         (<?php $this->_($attachmentsData['fileSize']) ?>)&nbsp;
-                                        <a href="<?php echo $attachmentsData['retrievalURLLocal']; ?>">
+                                        <a href="<?php echo $attachmentsData['retrievalURL']; ?>">
                                             <?php $this->_($attachmentsData['originalFilename']) ?>
                                         </a>
                                     </td>
