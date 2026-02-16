@@ -980,6 +980,7 @@ class CareersUI extends UserInterface
     {
         $validator = '';
 
+        // First name is always required if the field is present in the template.
         if (strpos($template['Content'], '<input-firstName>') !== false || strpos($template['Content'], '<input-firstName req>') !== false)
         {
             $validator .= '
@@ -991,6 +992,7 @@ class CareersUI extends UserInterface
                 }';
         }
 
+        // Last name is always required if the field is present in the template.
         if (strpos($template['Content'], '<input-lastName>') !== false || strpos($template['Content'], '<input-lastName req>') !== false)
         {
             $validator .= '
@@ -1002,6 +1004,7 @@ class CareersUI extends UserInterface
                 }';
         }
 
+        // Email confirmation must match the primary email if the field is present.
         if (strpos($template['Content'], '<input-emailconfirm>') !== false || strpos($template['Content'], '<input-emailconfirm req>') !== false)
         {
             $validator .= '
@@ -1013,6 +1016,7 @@ class CareersUI extends UserInterface
                 }';
         }
 
+        // Primary email must be present and must look somewhat valid.
         if (strpos($template['Content'], '<input-email>') !== false || strpos($template['Content'], '<input-email req>') !== false)
         {
             $validator .= '
@@ -1031,6 +1035,11 @@ class CareersUI extends UserInterface
                 }';
         }
 
+        /*
+         * Optional fields that can be made required by using the "req" marker
+         * in the template, for example <input-phone-cell req>.
+         */
+
         if (strpos($template['Content'], '<input-address req>') !== false)
         {
             $validator .= '
@@ -1047,7 +1056,7 @@ class CareersUI extends UserInterface
             $validator .= '
                 if (document.getElementById(\'address2\').value == \'\')
                 {
-                    alert(\'Please enter an address.\');
+                    alert(\'Please enter address line 2.\');
                     document.getElementById(\'address2\').focus();
                     return false;
                 }';
@@ -1097,6 +1106,84 @@ class CareersUI extends UserInterface
                 }';
         }
 
+        if (strpos($template['Content'], '<input-phone-cell req>') !== false)
+        {
+            $validator .= '
+                if (document.getElementById(\'phoneCell\').value == \'\')
+                {
+                    alert(\'Please enter a mobile phone number.\');
+                    document.getElementById(\'phoneCell\').focus();
+                    return false;
+                }';
+        }
+
+        if (strpos($template['Content'], '<input-phone-home req>') !== false)
+        {
+            $validator .= '
+                if (document.getElementById(\'phoneHome\').value == \'\')
+                {
+                    alert(\'Please enter a home phone number.\');
+                    document.getElementById(\'phoneHome\').focus();
+                    return false;
+                }';
+        }
+
+        if (strpos($template['Content'], '<input-best-time-to-call req>') !== false ||
+            strpos($template['Content'], '<input-bestTimeToCall req>') !== false)
+        {
+            $validator .= '
+                if (document.getElementById(\'bestTimeToCall\').value == \'\')
+                {
+                    alert(\'Please enter the best time to call.\');
+                    document.getElementById(\'bestTimeToCall\').focus();
+                    return false;
+                }';
+        }
+
+        if (strpos($template['Content'], '<input-email2 req>') !== false)
+        {
+            $validator .= '
+                if (document.getElementById(\'email2\').value == \'\')
+                {
+                    alert(\'Please enter an E-Mail address.\');
+                    document.getElementById(\'email2\').focus();
+                    return false;
+                }';
+        }
+
+        if (strpos($template['Content'], '<input-source req>') !== false)
+        {
+            $validator .= '
+                if (document.getElementById(\'source\').value == \'\')
+                {
+                    alert(\'Please enter a source.\');
+                    document.getElementById(\'source\').focus();
+                    return false;
+                }';
+        }
+
+        if (strpos($template['Content'], '<input-employer req>') !== false)
+        {
+            $validator .= '
+                if (document.getElementById(\'employer\').value == \'\')
+                {
+                    alert(\'Please enter your current employer.\');
+                    document.getElementById(\'employer\').focus();
+                    return false;
+                }';
+        }
+
+        if (strpos($template['Content'], '<input-resumeUpload req>') !== false)
+        {
+            $validator .= '
+                if (document.getElementById(\'resume\').value == \'\')
+                {
+                    alert(\'Please upload your resume.\');
+                    document.getElementById(\'resume\').focus();
+                    return false;
+                }';
+        }
+
         if (strpos($template['Content'], '<input-keySkills req>') !== false)
         {
             $validator .= '
@@ -1115,6 +1202,54 @@ class CareersUI extends UserInterface
                 {
                     alert(\'Please enter some extra notes.\');
                     document.getElementById(\'extraNotes\').focus();
+                    return false;
+                }';
+        }
+
+        /*
+         * EEO fields (if enabled and placed in the template).
+         */
+
+        if (strpos($template['Content'], '<input-eeo-gender req>') !== false)
+        {
+            $validator .= '
+                if (document.getElementById(\'eeogender\').value == \'\')
+                {
+                    alert(\'Please select your gender.\');
+                    document.getElementById(\'eeogender\').focus();
+                    return false;
+                }';
+        }
+
+        if (strpos($template['Content'], '<input-eeo-race req>') !== false)
+        {
+            $validator .= '
+                if (document.getElementById(\'eeorace\').value == \'\')
+                {
+                    alert(\'Please select your race.\');
+                    document.getElementById(\'eeorace\').focus();
+                    return false;
+                }';
+        }
+
+        if (strpos($template['Content'], '<input-eeo-veteran req>') !== false)
+        {
+            $validator .= '
+                if (document.getElementById(\'eeoveteran\').value == \'\')
+                {
+                    alert(\'Please select your veteran status.\');
+                    document.getElementById(\'eeoveteran\').focus();
+                    return false;
+                }';
+        }
+
+        if (strpos($template['Content'], '<input-eeo-disability req>') !== false)
+        {
+            $validator .= '
+                if (document.getElementById(\'eeodisability\').value == \'\')
+                {
+                    alert(\'Please select your disability status.\');
+                    document.getElementById(\'eeodisability\').focus();
                     return false;
                 }';
         }
