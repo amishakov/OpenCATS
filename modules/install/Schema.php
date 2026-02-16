@@ -1370,6 +1370,10 @@ class CATSSchema
                 WHERE address IS NOT NULL
                   AND INSTR(address, \'\\n\') > 0;
             ',
+            '368' => '
+                ALTER TABLE `user`
+                    MODIFY `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT \'\';
+            ',
 
         );
     }
