@@ -1487,7 +1487,7 @@ CREATE TABLE `site` (
 
 LOCK TABLES `site` WRITE;
 /*!40000 ALTER TABLE `site` DISABLE KEYS */;
-INSERT INTO `site` VALUES (1,'example.com',0,0,0,'1000-01-01 00:00:00',NULL,NULL,0,1,0,NULL,-3,0,1,0,465,1780,14,'1000-01-01',0,0,1,0),(180,'CATS_ADMIN',0,0,0,'1000-01-01 00:00:00','catsadmin',NULL,0,1,0,NULL,-3,0,1,0,0,0,0,'1000-01-01',0,0,0,0);
+INSERT INTO `site` VALUES (1,'example.com',0,0,0,'1000-01-01 00:00:00',NULL,NULL,0,1,0,NULL,-3,0,1,'+1',0,465,1780,14,'1000-01-01',0,0,1,0),(180,'CATS_ADMIN',0,0,0,'1000-01-01 00:00:00','catsadmin',NULL,0,1,0,NULL,-3,0,1,'+1',0,0,0,0,'1000-01-01',0,0,0,0);
 /*!40000 ALTER TABLE `site` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1619,7 +1619,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,1,'admin','admin@example.com','21232f297a57a5a743894a0e4a801fc3',500,1,0,'Administrator','CATS',0,NULL,NULL,15,NULL,0,'','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(1250,180,'cats@rootadmin','0','cantlogin',0,0,0,'Automated','CATS',0,NULL,NULL,15,NULL,0,'','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0);
+INSERT INTO `user` VALUES (1,1,'admin','admin@example.com',md5('cats'),500,1,0,'Administrator','CATS',0,NULL,NULL,15,NULL,0,'','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(1250,180,'cats@rootadmin','0','cantlogin',0,0,0,'Automated','CATS',0,NULL,NULL,15,NULL,0,'','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
