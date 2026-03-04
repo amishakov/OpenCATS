@@ -1393,6 +1393,9 @@ class CATSSchema
                     );
                 }
             ',
+            '366' => '
+                DELETE FROM module_schema WHERE name = \'toolbar\';
+            ',
 
         );
     }
