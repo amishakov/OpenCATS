@@ -120,64 +120,15 @@ class StringUtility
     }
 
 	/**
-	 * Returns the first phone number that could be extracted from a string.
-	 *
-	 * Uses the new E.164-based implementation. The previous NANP-specific
-	 * implementation is kept below as commented legacy code to support
-	 * future refactoring.
-	 *
-	 * @param string $string String to test.
-	 * @return string Phone number or '' if not found.
-	 */
-	public static function extractPhoneNumber($string)
-	{
-		/*
-		 * Legacy NANP-based implementation kept for reference during
-		 * refactoring.
-		 *
-		 * if (preg_match('/'
-		 *     . self::matchPHECountryCode . self::matchPHSeparator . self::matchPHEAreaCode
-		 *     . self::matchPHSeparator    . self::matchPHEExchange . self::matchPHSeparator
-		 *     . self::matchPHENumber      . self::matchPHSeparator . self::matchPHEExtension
-		 *     . '/i', $string, $matches))
-		 * {
-		 *     // Do not format international phone numbers.
-		 *     if (!empty($matches['countryCode']) && ($matches['countryCode'] != '1'))
-		 *     {
-		 *         return $string;
-		 *     }
-		 *
-		 *     $formattedPhoneNumber = sprintf(
-		 *         '%s-%s-%s',
-		 *         $matches['areaCode'],
-		 *         $matches['exchange'],
-		 *         $matches['number']
-		 *     );
-		 *
-		 *     if (isset($matches['extension']) && !empty($matches['extension']))
-		 *     {
-		 *         $formattedPhoneNumber .= ' x ' . $matches['extension'];
-		 *     }
-		 *
-		 *     return $formattedPhoneNumber;
-		 * }
-		 *
-		 * return '';
-		 */
-
-		return self::extractPhoneNumberE164($string);
-	}
-
-    /**
      * Returns the first phone number that could be extracted from a string
      * and normalizes it to E.164 where possible.
      *
      * @param string $string String to test.
      * @return string Normalized E.164 phone number or '' if not found.
      */
-    private static function extractPhoneNumberE164($string)
-    {
-        /* 1) Trim leading / trailing whitespace. */
+	public static function extractPhoneNumber($string)
+	{
+		/* 1) Trim leading / trailing whitespace. */
         $string = trim((string) $string);
 
         /* 2) Replace leading "00" with "+" (0049... -> +49...). */
@@ -237,7 +188,7 @@ class StringUtility
         }
 
         return $countryCode . $nationalNumber;
-    }
+	}
 
     /**
      * Returns the default phone country calling code (E.164) for the
